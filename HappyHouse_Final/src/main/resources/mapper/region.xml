@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.mapper.RegionMapper">
+
+	<!-- 구 전체 조회 -->
+	<select id="selectGu" parameterType="String" resultType="String">
+		SELECT distinct gugun
+		FROM happyhouse.dongcode
+		WHERE city = #{city};
+	</select>
+	
+	<!-- 동 전체 조회 -->
+	<select id="selectDong" parameterType="String" resultType="Region">
+		SELECT dc.dongcode, dc.city, dc.gugun, dc.dong, dl.lat, dl.lng
+		FROM happyhouse.dongcode as dc, donglnglat as dl
+		WHERE gugun = #{gu} AND dc.dong = dl.dong;
+	</select>
+	
+	<!-- 동 하나 조회 -->
+	<select id="selectOneDong" parameterType="String" resultType="Region">
+		SELECT dc.dongcode, dc.city, dc.gugun, dc.dong, dl.lat, dl.lng
+		FROM happyhouse.dongcode as dc, donglnglat as dl
+		WHERE dc.dong = #{dongName} AND dc.dong = dl.dong;
+	</select>
+	
+</mapper>
+

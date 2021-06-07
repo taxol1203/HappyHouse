@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.model.mapper.HouseMapper">
+	<select id="select" resultType="House">
+		select hd.no, hd.dong, hd.aptName, hd.code, hd.dealAmount, hd.buildYear, hd.dealYear,
+		hd.dealMonth, hd.dealDay, hd.area, hd.floor, hd.jibun, hi.lat, hi.lng
+		from housedeal as hd
+		left outer join houseinfo as hi
+		on hd.dong = hi.dong and hd.aptName = hi.aptName
+	</select>
+	
+	<select id="selectName" parameterType="String" resultType="House">
+		select hd.no, hd.dong, hd.aptName, hd.code, hd.dealAmount, hd.buildYear, hd.dealYear,
+		hd.dealMonth, hd.dealDay, hd.area, hd.floor, hd.jibun, hi.lat, hi.lng
+		from housedeal as hd
+		left outer join houseinfo as hi
+		on hd.dong = hi.dong and hd.aptName = hi.aptName
+		where hd.aptname like #{name}
+	</select>
+	
+	<select id="selectDong" parameterType="String" resultType="House">
+		select hd.no, hd.dong, hd.aptName, hd.code, hd.dealAmount, hd.buildYear, hd.dealYear,
+		hd.dealMonth, hd.dealDay, hd.area, hd.floor, hd.jibun, hi.lat, hi.lng
+		from housedeal as hd
+		left outer join houseinfo as hi
+		on hd.dong = hi.dong and hd.aptName = hi.aptName
+		where hd.dong like #{dong}
+	</select>
+	
+	<select id="selectPrice" parameterType="int" resultType="House">
+		select hd.no, hd.dong, hd.aptName, hd.code, hd.dealAmount, hd.buildYear, hd.dealYear,
+		hd.dealMonth, hd.dealDay, hd.area, hd.floor, hd.jibun, hi.lat, hi.lng
+		from housedeal as hd
+		left outer join houseinfo as hi
+		on hd.dong = hi.dong and hd.aptName = hi.aptName
+		<![CDATA[
+		where cast(replace(dealAmount,',','') as unsigned) <= #{price} order by dealAmount desc
+		]]>
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="House">
+		select hd.no, hd.dong, hd.aptName, hd.code, hd.dealAmount, hd.buildYear, hd.dealYear,
+		hd.dealMonth, hd.dealDay, hd.area, hd.floor, hd.jibun, hi.lat, hi.lng
+		from housedeal as hd
+		left outer join houseinfo as hi
+		on hd.dong = hi.dong and hd.aptName = hi.aptName
+		where hd.no = #{no}
+	</select>
+	
+</mapper>
