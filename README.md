@@ -1,7 +1,7 @@
 # Happy House
 > ㅁㄴㅇㄹ
 
-![sample_Image](https://user-images.githubusercontent.com/38308337/121033349-134b3200-c7e7-11eb-923c-12ed256be0d1.JPG)
+![screenshot](https://user-images.githubusercontent.com/38308337/121035593-ff083480-c7e8-11eb-93c3-c608d3dd98f2.JPG)
 
 ## 설치 방법
 
