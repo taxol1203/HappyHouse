@@ -5,8 +5,8 @@
 
 ## Preview 
 
-## How to install
+## Installation
 
-## 사용 예제
+## Usage example
 
 ## Built With 🔧
